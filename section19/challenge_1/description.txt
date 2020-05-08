@@ -1,0 +1,13 @@
+Section 19 
+Challenge 1 
+
+Formatting output
+===========================================================
+There are 3 structures provided. Yes, these could also be classes with public data, 
+but it's common to use structures when we simply want to model only data and not 
+operations as we would with classes.
+
+The structures work together to create a Tours structure that will contain
+information about Tours to South America.
+The Tours include Countries, Cities within those countries along with population and cost data for 
+each city tour.
