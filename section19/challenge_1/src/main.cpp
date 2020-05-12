@@ -6,9 +6,6 @@
 #include <vector>
 #include <string>
 
-const int colunm_size = 100;
-const int field_size = 25;
-
 struct City {
     std::string name;
     long population;
@@ -63,53 +60,50 @@ int main()
         }
     };
 
-    std::cout << std::setprecision(2) << std::fixed;
+    const int total_width{70};
+    const int field1_width{20};     // country name
+    const int field2_width{20};     // city name
+    const int field3_width{15};     // population
+    const int field4_width{15};     // cost
 
     characters_colunms();
-    display_header(tours);
- 
-    for(size_t i{0}; i < tours.countries.size(); i++){
-        std::cout << std::setw(field_size) << std::left << tours.countries[i].name
-                  << std::setw(field_size) << std::left << tours.countries[i].cities[0].name
-                  << std::setw(field_size) << std::right << tours.countries[i].cities[0].population
-                  << std::setw(field_size) << std::right << tours.countries[i].cities[0].cost
-                  << std::endl;
+
+    // Display the report title header centered in width of total_width
     
-        for(size_t j{1}; j < tours.countries[i].cities.size(); j++){
-            std::cout << std::setw(field_size) << " " << std::setw(field_size) << std::left << tours.countries[i].cities[j].name
-                      << std::setw(field_size) << std::right << tours.countries[i].cities[j].population
-                      << std::setw(field_size) << std::right << tours.countries[i].cities[j].cost
+    int title_length = tours.title.size();
+    std::cout << std::setw((total_width - title_length)/2) << "" << tours.title << std::endl << std::endl;
+
+    std::cout << std::setw(field1_width) << std::left << "Country"
+              << std::setw(field2_width) << std::left << "City"
+              << std::setw(field3_width) << std::right << "Population"
+              << std::setw(field4_width) << std::right << "Price"
+              << std::endl;  
+
+    std::cout << std::setw(total_width) << std::setfill('-') << "" << std::endl;
+
+    // Reset the filling character to blank space and set the decimal precision to 2
+    
+    std::cout << std::setfill(' ');                     
+    std::cout << std::setprecision(2) << std::fixed;
+
+    // Show the table with all the data from the tours
+
+    for(Country Country : tours.countries){
+        for(size_t i{0}; i < Country.cities.size(); i++){
+            
+            std::cout << std::setw(field1_width) << std::left << ((i == 0) ? Country.name : "")
+                      << std::setw(field2_width) << std::left << Country.cities.at(i).name
+                      << std::setw(field3_width) << std::right << Country.cities.at(i).population
+                      << std::setw(field4_width) << std::right << Country.cities.at(i).cost
                       << std::endl;
         }
     }
+
 
     std::cout << std::endl << std::endl;
     return 0;
 }
 
-
-
-
-void display_center(std::string const &original, int colunm_size){
-    
-    int blank_space_size = (colunm_size - original.size()) / 2;
-    std::string centered_string = std::string(blank_space_size, ' ') + original + std::string(blank_space_size, ' '); 
-    std::cout << std::setw(colunm_size) << centered_string << std::endl;
-}
-
 void characters_colunms(){
-    std::cout << "123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|" << std::endl << std::endl;
-}
-
-void display_header(Tours const &obj){
-    display_center(obj.title, colunm_size);
-    std::cout << std::setfill('=') << std::setw(colunm_size) << "=" << std::endl;
-    std::cout << std::setfill(' ');
-    std::cout << std::setw(25) << std::left << "Countries"
-              << std::setw(25) << std::left << "Cities"
-              << std::setw(25) << std::right << "Population"
-              << std::setw(25) << std::right << "Price";
-
-    std::cout << std::setfill('-') << std::setw(colunm_size) << "-" << std::endl;
-    std::cout << std::setfill(' ');
+    std::cout << "123456789|123456789|123456789|123456789|123456789|123456789|123456789|" << std::endl << std::endl;
 }
