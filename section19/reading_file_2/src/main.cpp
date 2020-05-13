@@ -6,7 +6,7 @@ int main(){
 
     std::ifstream in_file;
     std::string line;
-
+    char c;
     in_file.open("poem.txt");
 
     if(!in_file){
@@ -14,15 +14,15 @@ int main(){
         return 1;
     }
 
-    // Reading line by line of the file and displaying it
-
-    while(std::getline(in_file, line)){         // if we have a problem trying to read the line
-        std::cout << line << std::endl;         // or it's the end of the file, then we have false
+    // Reading character by character of the file and displaying it
+     
+    while(in_file.get(c)){          // true  - if gets the character from the file
+        std::cout << c;             // false - if it's the end of the file or there was a problem reading the character
     }
 
 
 
     in_file.close();
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     return 0;
 }
