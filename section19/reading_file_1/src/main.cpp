@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 int main(){
 
@@ -20,12 +21,19 @@ int main(){
         return 1;
     }
 
-    in_file >> line >> num >> total;
+    // Reading data from test.txt and formatting the output
 
-    std::cout << line << std::endl;
-    std::cout << num << std::endl;
-    std::cout << total << std::endl;
-    
+    while(!in_file.eof()){              // eof() return true if it is in the end of the file         
+        
+        in_file >> line >> num >> total;
+
+        std::cout << std::setw(10) << std::left << line
+                << std::setw(10) << num
+                << std::setw(10) << total
+                << std::endl;
+    }
+
+
     in_file.close();
 
     std::cout << std::endl;
