@@ -64,16 +64,26 @@ int main(){
 }
 
 void show_log(std::vector<Student> &vec){
-    int const SIZE = 20;
+    int const SIZE{20};
+    double total_score{};
+
     std::cout << std::setw(SIZE) << std::left << "Students" 
               << std::setw(SIZE) << std::right << "Score" 
               << std::endl;
+    
     std::cout << std::setw(2 * SIZE) << std::setfill('-') << "" << std::endl;
     std::cout << std::setfill(' ');
 
     for(size_t i{0}; i < vec.size(); i++){
         std::cout << std::setw(SIZE) << std::left << vec.at(i).name
                   << std::setw(SIZE) << std::right << vec.at(i).score
-                  << std::endl;    
+                  << std::endl;
+        total_score += vec.at(i).score;    
     }
+    std::cout << std::setw(2 * SIZE) << std::setfill('-') << "" << std::endl;
+    std::cout << std::setfill(' ');
+    
+    std::cout << std::setw(SIZE) << std::left << "Average"
+              << std::setw(SIZE) << std::right << total_score / vec.size() 
+              << std::setprecision(1) << std::fixed << std::endl;
 }
