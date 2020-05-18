@@ -10,6 +10,7 @@ int main(){
 
     if(!in_file.is_open()){
         std::cerr << "Error opening the file" << std::endl;
+        return 1;
     }
 
     std::cout << "Enter the word to be searched for: ";
@@ -22,11 +23,11 @@ int main(){
         std::string word{};
         in_file >> word;
 
-        size_t found = word.find(user_word);
-        if(found != std::string::npos){
-            find_counter += 1;
+        size_t found = word.find(user_word);    // Search for substring user_word in word
+        if(found != std::string::npos){         // if found it - return the position of the first character of the substring in word
+            find_counter++;                     // if does not found it - return npos
         }
-        word_counter += 1;
+        word_counter++;
     }
 
 
