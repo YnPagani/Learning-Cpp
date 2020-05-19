@@ -7,9 +7,9 @@
 int main(){
 
     /* creates the file if it does not exist, if it exists, 
-    then all it's data will be overwritten */
+    then it appends data to the end of the file */
 
-    std::ofstream out_file{"output.txt"};
+    std::ofstream out_file{"output.txt", std::ios::app};
 
     // Checks if there were no errors
 

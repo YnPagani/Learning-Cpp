@@ -1,1 +1,3 @@
 he hey
+hey another line coool
+Hey from debug mode
