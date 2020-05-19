@@ -35,6 +35,7 @@ int main(){
     std::cout << word_counter << " words were searched..." << std::endl;
     std::cout << "The substring " << user_word << " was found " << find_counter << " times" << std::endl << std::endl;
 
+    in_file.close();
     
     
     return 0;

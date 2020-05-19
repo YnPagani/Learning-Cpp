@@ -60,6 +60,7 @@ int main(){
 
     show_log(log);
 
+    in_file.close();
     return 0;
 }
 
