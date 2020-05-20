@@ -18,9 +18,9 @@ int main(){
 
     while(!in_file.eof()){
         std::getline(in_file, line);
-        std::string blank_line = std::string(line.size(), ' ');
+        // std::string blank_line = std::string(line.size(), ' ');
 
-        if(line.compare(blank_line) == 0){
+        if(line == ""){
             out_file << std::setw(10) << std::left << " " << line << std::endl;            
         }
         else{
