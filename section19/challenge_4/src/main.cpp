@@ -18,9 +18,15 @@ int main(){
 
     while(!in_file.eof()){
         std::getline(in_file, line);
+        std::string blank_line = std::string(line.size(), ' ');
 
-        out_file << std::setw(10) << std::left << line_number << line << std::endl;
-        line_number++;
+        if(line.compare(blank_line) == 0){
+            out_file << std::setw(10) << std::left << " " << line << std::endl;            
+        }
+        else{
+            out_file << std::setw(10) << std::left << line_number << line << std::endl;
+            line_number++;            
+        }
     }
     std::cout << "Process done!" << std::endl;
     
