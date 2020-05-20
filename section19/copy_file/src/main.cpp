@@ -12,11 +12,11 @@ int main(){
         return 1;
     }
 
-    std::string line{};
+    char c;
 
     while(!in_file.eof()){
-        std::getline(in_file, line);
-        out_file << line << std::endl;
+        in_file.get(c);
+        out_file.put(c);
     }
     std::cout << "File copied!" << std::endl;
 
